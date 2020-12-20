@@ -1,0 +1,16 @@
+--deploy-mode cluster
+--master yarn
+--deploy-mode cluster
+--conf spark.executor.heartbeatInterval=360s
+--conf spark.network.timeout=600s
+--conf "spark.executor.extraJavaOptions=-XX:+UseG1GC -XX:+UseCompressedOops -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp"
+--driver-memory 1g
+--executor-cores 3
+--executor-memory 9g
+--class org.review.big_data_aws_demo.bootcamp_itab_academy.FilterFootGamesByCountry
+
+s3://dev01-big-data-aws-demo/jar-files/big-data-aws-demo-jar-with-dependencies.jar
+
+dev01-big-data-aws-demo/input
+France
+dev01-big-data-aws-demo/output
