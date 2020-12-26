@@ -17,6 +17,12 @@ object OutputMapper {
     InputMapper.away(row)
   }
 
+  private def asHome(row: Row, country: Country): Boolean = if (InputMapper.home(row).equals(country.label)) {
+    true
+  } else {
+    false
+  }
+
   private def teamScore(row: Row, country: Country): String = if (InputMapper.home(row).equals(country.label)) {
     InputMapper.homeScore(row)
   } else {
@@ -34,6 +40,7 @@ object OutputMapper {
       InputMapper.date(row),
       team(row, country),
       opponent(row, country),
+      asHome(row, country),
       teamScore(row, country),
       opponentScore(row, country),
       InputMapper.tournament(row),
