@@ -1,7 +1,11 @@
 package org.review.big_data_aws_demo
 
-import org.review.big_data_aws_demo.conf.{Configuration, Country, ExecutionConfiguration}
+
+import org.apache.spark.sql.SaveMode
+import org.apache.spark.sql.catalyst.encoders.RowEncoder
+import org.review.big_data_aws_demo.conf.{Configuration, Country, ExecutionConfiguration, Schemas}
 import org.review.big_data_aws_demo.filter.Filters
+import org.review.big_data_aws_demo.mapping.OutputMapper
 
 object SoccerGamesFiltering extends App {
 
@@ -15,14 +19,17 @@ object SoccerGamesFiltering extends App {
       .getOrCreate()
 
     val footGamesDF = sparkSession.read
-      .option("", "permissive")
+      .option("mode", "permissive")
       .option("header", true)
       .csv(buildCollectionInputPath(configuration.inputPath))
 
     val filteredDF = footGamesDF
       .filter(Filters.filterByYear(_, configuration.year))
       .filter(Filters.filterByCountry(_, configuration.country.label))
-    filteredDF.write.json(buildCollectionOutputPath(configuration))
+
+    val encoder = RowEncoder(Schemas.OutputGameResult)
+    val outputDF = filteredDF.map(OutputMapper.toOutputGameResult(_, configuration.country))(encoder)
+    outputDF.write.mode(SaveMode.Overwrite).json(buildCollectionOutputPath(configuration))
   }
 
   def buildCollectionInputPath(inputPath: String): String = {
