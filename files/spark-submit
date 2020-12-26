@@ -7,10 +7,11 @@
 --driver-memory 1g
 --executor-cores 3
 --executor-memory 9g
---class org.review.big_data_aws_demo.bootcamp_itab_academy.FilterFootGamesByCountry
+--class org.review.big_data_aws_demo.SoccerGamesFiltering
 
 s3://dev01-big-data-aws-demo/jar-files/big-data-aws-demo-jar-with-dependencies.jar
 
-dev01-big-data-aws-demo/input
-France
-dev01-big-data-aws-demo/output
+s3://dev01-big-data-aws-demo/input
+MX
+s3://dev01-big-data-aws-demo/output
+2019

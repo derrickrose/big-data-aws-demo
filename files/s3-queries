@@ -1,0 +1,3 @@
+SELECT * FROM s3object s LIMIT 5;
+SELECT COUNT(*) as NUM_FILTERED FROM s3object;
+SELECT COUNT(*) as NUM_NOT_MEXICO FROM s3object s WHERE s.home_team <> 'Mexico' AND s.away_team <> 'Mexico';
