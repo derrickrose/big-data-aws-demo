@@ -11,7 +11,7 @@ class SoccerGamesFilteringTest extends FlatSpec with SparkTestContext with Match
     val footGamesDF = TestSparkSession.read
       .option("mode", "permissive")
       .option("header", true)
-      .csv("files/foot.csv")
+      .csv("files/foot-ball-games.csv")
 
     //footGamesDF should not be empty
     assert(footGamesDF.count() > 0, "Games dataFrame should not be empty")
