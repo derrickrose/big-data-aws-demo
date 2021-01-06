@@ -35,6 +35,7 @@ object OutputMapper {
     InputMapper.awayScore(row)
   }
 
+  //TODO use case class
   def toOutputGameResult(row: Row, country: Country): Row = {
     Row(
       InputMapper.date(row),
@@ -49,16 +50,3 @@ object OutputMapper {
       InputMapper.neutral(row))
   }
 }
-
-//
-//case class OutputGameResult(
-//                             date: String,
-//                             team: String,
-//                             opponent: String,
-//                             team_score: Int,
-//                             opponent_score: Int,
-//                             tournament: String,
-//                             city: String,
-//                             country: String,
-//                             neutral: Boolean
-//                           )
