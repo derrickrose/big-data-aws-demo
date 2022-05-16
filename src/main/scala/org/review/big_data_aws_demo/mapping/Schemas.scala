@@ -1,4 +1,4 @@
-package org.review.big_data_aws_demo.conf
+package org.review.big_data_aws_demo.mapping
 
 import org.apache.spark.sql.types._
 

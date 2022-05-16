@@ -3,9 +3,9 @@ package org.review.big_data_aws_demo
 
 import org.apache.spark.sql.SaveMode
 import org.apache.spark.sql.catalyst.encoders.RowEncoder
-import org.review.big_data_aws_demo.conf.{Configuration, Country, ExecutionConfiguration, Schemas}
+import org.review.big_data_aws_demo.conf.{Configuration, Country, ExecutionConfiguration}
 import org.review.big_data_aws_demo.filter.Filters
-import org.review.big_data_aws_demo.mapping.OutputMapper
+import org.review.big_data_aws_demo.mapping.{OutputMapper, Schemas}
 
 object SoccerGamesFiltering extends App {
 
